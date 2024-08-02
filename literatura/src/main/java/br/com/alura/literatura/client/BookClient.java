@@ -1,5 +1,6 @@
 package br.com.alura.literatura.client;
 
+import br.com.alura.literatura.model.Author;
 import br.com.alura.literatura.model.Book;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -59,7 +60,9 @@ public class BookClient {
         JsonNode authors = node.get("authors");
         if (authors.isArray() && authors.size() > 0) {
             JsonNode authorNode = authors.get(0);
-            book.setAuthor(authorNode.get("name").asText());
+            Author author = new Author();
+            author.setName(authorNode.get("name").asText());
+            book.setAuthor(author);
         }
 
         return book;

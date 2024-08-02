@@ -1,14 +1,15 @@
-CREATE TABLE author (
-    id SERIAL PRIMARY KEY,
+CREATE TABLE authors (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     birth_year INT,
     death_year INT
 );
 
-CREATE TABLE book (
-    id SERIAL PRIMARY KEY,
+CREATE TABLE books (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
-    author VARCHAR(255),
+    author_id BIGINT,
     language VARCHAR(50),
-    download_count INT
+    download_count BIGINT,
+    FOREIGN KEY (author_id) REFERENCES authors(id)
 );
