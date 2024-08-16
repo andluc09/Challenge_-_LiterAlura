@@ -36,25 +36,25 @@ public class LiteraturaApplication {
 				System.out.println("7 - Top 10 livros mais baixados");
 				System.out.println("0 - Sair");
 				System.out.println("————————————————————————————————————————————————————————");
-				System.out.print("Escolha uma das opções: ");
+				System.out.print("\nEscolha uma das opções: ");
 
 				try {
 					option = Integer.parseInt(scanner.nextLine());
 				} catch (NumberFormatException e) {
-					System.out.println("Por favor, insira um número válido.");
+					System.out.println("\nPor favor, insira um número válido.");
 					continue;
 				}
 
 				switch (option) {
 					case 1:
-						System.out.print("Digite o título do livro: ");
+						System.out.print("\nDigite o título do livro: ");
 						String title = scanner.nextLine();
-						literaturaService.searchBookByTitle(title);
+						literaturaService.searchAndInsertBookByTitle(title);
 						break;
 					case 2:
-						System.out.print("Digite o nome do autor: ");
+						System.out.print("\nDigite o nome do autor: ");
 						String author = scanner.nextLine();
-						literaturaService.searchBooksByAuthor(author);
+						literaturaService.searchAndInsertBooksByAuthor(author);
 						break;
 					case 3:
 						literaturaService.listAllBooks();
@@ -63,27 +63,38 @@ public class LiteraturaApplication {
 						literaturaService.listAllAuthors();
 						break;
 					case 5:
-						System.out.print("Digite o ano para verificar autores vivos: ");
+						System.out.print("\nDigite o ano para verificar autores vivos: ");
 						int year = Integer.parseInt(scanner.nextLine());
 						literaturaService.listAuthorsAliveInYear(year);
 						break;
 					case 6:
-						System.out.println("Insira um idioma para realizar a busca:");
+						System.out.println("\nInsira um idioma para realizar a busca:\n");
 						System.out.println("es - espanhol");
 						System.out.println("en - inglês");
 						System.out.println("fr - francês");
-						System.out.println("pt - português");
-						String language = scanner.nextLine();
+						System.out.println("pt - português\n");
+
+						String language;
+						while (true) {
+							language = scanner.nextLine().trim().toLowerCase();
+							if (language.equals("es") || language.equals("en") || language.equals("fr") || language.equals("pt")) {
+								break;
+							} else {
+								System.out.println("\nSigla inválida! Por favor, insira uma sigla válida (es, en, fr, pt):\n");
+							}
+						}
+
 						literaturaService.listBooksByLanguage(language);
 						break;
 					case 7:
 						literaturaService.listTop10DownloadedBooks();
 						break;
 					case 0:
-						System.out.println("Saindo...");
+						System.out.println("\nSaindo...");
+						System.exit(0);
 						break;
 					default:
-						System.out.println("Opção inválida. Tente novamente.");
+						System.out.println("\nOpção inválida! Tente novamente..");
 				}
 			}
 		};
