@@ -1,4 +1,4 @@
-# Challenge_-_LiterAlura
+# Challenge - LiterAlura
 
 Acervo Literário - Onde um catálogo de Livros ofereçe interação textual (via console) com os usuários.
 
