@@ -16,6 +16,10 @@ Acervo Literário - Onde um catálogo de Livros ofereçe interação textual (vi
 
 * JSON (Arquivo)
 
+* Arquitetura **MVC**
+
+* Banco de Dados Relacional (*PostgreSQL*)
+
 ## Feito por:
 
 ### André Santos
